@@ -1,6 +1,15 @@
 const items = document.querySelector('.items');
+const form = document.querySelector('.new-form');
 const input = document.querySelector('.footer__input');
 const addBtn = document.querySelector('.footer__button');
+
+
+form.addEventListener('submint', (event) => {
+    //submit 이벤트 발생시 자동으로 페이지가 재로딩됨
+    event.preventDefault();    
+    onAdd();
+});
+
 
 function onAdd() {
     //1. 사용자가 입력한 텍스트를 받아온다
@@ -68,10 +77,14 @@ function createItem(text) {
     return itemRow;
 };
 
-addBtn.addEventListener('click', () => {
-    onAdd();
-})
 
+
+// html form 태그 추가로 submit 이벤트로 대체
+// addBtn.addEventListener('click', () => {
+//     onAdd();
+// })
+
+//하기 keydown으로 대체
 // input.addEventListener('keypress', (event) => {
 //     // console.log('key');
 //     if(event.key ==='Enter') {
@@ -80,16 +93,17 @@ addBtn.addEventListener('click', () => {
 // })
 
 
-input.addEventListener('keydown', (event) => {
-    // console.log('key');
-    //keydown사용의 경우 한글사용시 두번씩 입력되는문제가 발생 하기처럼 수정 아니면 간단하게 keyup을 사용
-    if(event.isComposing) {
-        return;
-    }
-    if(event.key ==='Enter') {
-        onAdd();
-    }
-})
+// html form 태그 추가로 submit 이벤트로 대체
+// input.addEventListener('keydown', (event) => {
+//     // console.log('key');
+//     //keydown사용의 경우 한글사용시 두번씩 입력되는문제가 발생 하기처럼 수정 아니면 간단하게 keyup을 사용
+//     if(event.isComposing) {
+//         return;
+//     }
+//     if(event.key ==='Enter') {
+//         onAdd();
+//     }
+// })
 
 
 items.addEventListener('click', (event) => {
