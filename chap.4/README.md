@@ -54,3 +54,38 @@
      obj.name = "john";
      console.log(obj.name);
      ```
+
+3. function
+
+   - 반복되는 기능을 함수로 정의해 불필요한 반복을 없앤다.
+     ```javascript
+     function add(a, b) {
+       return a + b;
+     }
+     //함수를 호출 한다는 것은 add라는 함수의 a, b에 3, 4를 할당해 해당 함수의 기능을 하고 return되는 것
+     const sum = add(3, 4); //sum = 7
+     console.log(sum); //7
+     ```
+   - 함수를 정의 할 때 정의한 코드블럭이 메모리 어딘가에 만들어짐(어떤 변수를 받아서 어떤걸 return)
+   - 해당 함수가 들어있는 ref 주소같은 값이 함수명(add)에 할당됨
+
+     ```javascript
+     const doSomething = add; //add의 ref값이 할당됨
+     const result = doSomething(2, 3);
+     console.log(result); // 5
+     const result2 = add(2, 3);
+     console.log(result2); // 5
+
+     //함수의 인자, 함수명 등 직관적으로 알 수있게 설정해주는 것이 좋다.
+     function print(name, age) {
+       console.log(`${name}, ${age}`);
+     }
+
+     //함수의 ref를 전달해서 함수를 전달한다
+     function surprise(operator) {
+       const result = operator(2, 3);
+       console.log(result);
+     }
+
+     surprise(add); //5
+     ```
