@@ -89,3 +89,26 @@
 
      surprise(add); //5
      ```
+
+4. boolean
+
+   ```javascript
+   //false: 0, -0, '', null, undefined (데이터가 없고 비어있는것)
+   //true: -1, 'hello'
+   let num; //undefined
+   if (false) {
+     console.log("true!");
+   } else {
+     console.log("false!");
+   }
+
+   // &&연산자는 && 앞부분이 true이어야 뒷부분이 실행한다
+   let obj = {
+     name: "ellie",
+   }; // 데이터가 비어있으면 undefined
+   if (obj) {
+     console.log(obj.name);
+   }
+
+   obj && console.log(obj.name); //obj가 데이터가 있어야 뒷부분이 실행됨
+   ```
