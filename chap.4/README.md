@@ -112,3 +112,60 @@
 
    obj && console.log(obj.name); //obj가 데이터가 있어야 뒷부분이 실행됨
    ```
+
+5. class 와 callback 함수
+
+   - 클래스안에서 콜백 함수를 호출하는 형식으로 해서 해당 클래스의 함수부분을 좀더 자유롭게 수정 활용 할 수 있다
+
+   ```javascript
+   // 함수에 매번 콜백함수를 입력하는 것은 불편하기 때문에 counstructor에 전달해줌
+   class Counter {
+     constructor(runEveryFiveTimes) {
+       this.counter = 0;
+       this.callback = runEveryFiveTimes;
+     }
+
+     increase(runIf5Times) {
+       this.counter++;
+       console.log(this.counter);
+       if (this.counter % 5 === 0) {
+         //console.log('yo!');
+         //runIf5Times(this.counter);
+         if (this.callback) {
+           this.callback(this.counter);
+         }
+         //간단하게 this.callback && this.callback(this.counter);
+       }
+     }
+   }
+
+   function printSomething(num) {
+     console.log(`${num} yo!`);
+   }
+   function alertNum(nuw) {
+     alert(`Wow! ${num}`);
+   }
+
+   //const coolCounter = new Counter();
+   const coolCounter = new Counter(printSomething); //constructor에 함수전달시 간편해짐
+
+   coolCounter.increase();
+   coolCounter.increase();
+   coolCounter.increase();
+   coolCounter.increase();
+   coolCounter.increase();
+   coolCounter.increase();
+   coolCounter.increase();
+   coolCounter.increase();
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(printSomething);
+   //coolCounter.increase(alertNum);
+   ```
