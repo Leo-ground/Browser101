@@ -1,0 +1,26 @@
+body {
+  margin: 0 0;
+  margin: auto;
+}
+
+.imgs {
+  background-color: aquamarine;
+  background-image: url("/chap.5/img/background.png");
+  width: auto;
+  height: 1000px;
+  z-index: 0;
+}
+
+.bug {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  z-index: 2;
+}
+
+.carrot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+}
