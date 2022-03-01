@@ -77,6 +77,7 @@ function showStopButton() {
     const icon = gameBtn.querySelector('.toggleBtn');
     icon.classList.add('fa-stop');
     icon.classList.remove('fa-play');
+    gameBtn.style.visibility = 'visible';
 }
 
 
