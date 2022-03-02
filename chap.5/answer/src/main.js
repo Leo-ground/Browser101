@@ -39,7 +39,7 @@ function onItemClick(item) {
         if (score === CARROT__COUNT) {
             finishGame(true);
         }
-    } else if (target.matches('.bug')) {
+    } else if (item === 'bug') {
         //벌레!!
         finishGame(false);
     }
