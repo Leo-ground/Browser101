@@ -72,3 +72,23 @@
 - 콜백스택에서 함수가 실행중이면 기다렸다가
 - 함수가 다 수행되면 먼저 들어갔던 큐에 있던 콜백함수가 콜 스택으로 가져옴
 - 한번에 한개씩 옮기기 때문에 먼저들어갔던 함수가 종료되면 다음 함수가 들어온다
+
+4. Microtask queue
+
+- Task Queue(우리가 흔하게 등록한 콜백함수)
+  - 콜스택에서 진행중인 함수는 끝날때까지 보장된다 다른일 못함
+  - setTimeout callback - click callback
+- Microtask Queue (promise 사용시)
+  - Microtask queue는 promise에 등록된 콜백(프로미스가 실행되고 나면 then 에 있는 콜백)
+  - mutation observer라는 웹 API 거기에 등록된 콜백이 들어오게 된다
+  - promise then - mutation observer
+- Render (브라우저에서 우리가 변형한 코드가 주기적으로 업데이트하기 위해 주기적으로 호출하는 것)
+  - Render를 할때 Request Animation Frame라는 웹API가 있다
+  - 이 API를 통해서 콜백을 등록해 놓으면, 다음에 브라우저가 업데이트되기전에 callback을 실행해 주는것
+  - Request Animation Frame에 차곡차곡 쌓아놓는다
+  - Request Animation Frame - Render Tree - Layout - Paint
+- Event loop가 Render를 지나(Render는 통상 60fps에 한번 실행)Microtack queue로 오면
+- 큐안에있는 아이템들을 콜스텍으로 하나씩 가져감 / 콜스택에서 함수가 종료된 시점에 Microtask Queue가 다 비어질때까지
+- Task Queue에 오게 되면 딱 아이템하나만 콜스택으로 가져와 콜백이 끝나면 Render로 간다
+- Render에서 Request Animaition Frame의 콜백을 하나씩 실행하고 순차적으로 브라우저 업데이트 후
+- 마찬가지로 마이크로스택 큐를 거쳐 테스크 큐에있는 다음 콜백을 가져오게된다.
